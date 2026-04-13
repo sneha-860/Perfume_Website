@@ -1,0 +1,41 @@
+.review-card {
+  padding: 24px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.review-card:last-child {
+  border-bottom: none;
+}
+
+.rc-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.rc-author {
+  font-weight: 600;
+  color: var(--black);
+}
+
+.rc-date {
+  color: var(--taupe);
+  font-size: 0.85rem;
+}
+
+.rc-rating {
+  margin-bottom: 12px;
+}
+
+.rc-title {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  color: var(--black);
+}
+
+.rc-body {
+  color: var(--taupe);
+  line-height: 1.7;
+  font-size: 0.95rem;
+}

@@ -1,0 +1,41 @@
+.reviews-list-section {
+  margin-top: 60px;
+}
+
+.rl-heading {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  margin-bottom: 24px;
+}
+
+.rl-summary {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid var(--black);
+}
+
+.rl-avg {
+  font-size: 3rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--black);
+}
+
+.rl-total {
+  color: var(--taupe);
+  font-size: 1rem;
+}
+
+.rl-empty {
+  color: var(--taupe);
+  font-style: italic;
+  font-size: 1rem;
+}
+
+.rl-cards {
+  display: flex;
+  flex-direction: column;
+}

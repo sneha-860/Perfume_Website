@@ -1,0 +1,22 @@
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--black);
+  color: var(--ivory);
+  border-left: 4px solid var(--gold);
+  padding: 14px 20px;
+  border-radius: var(--radius);
+  z-index: 1000;
+  box-shadow: var(--shadow);
+  font-weight: 500;
+}
+
+.slide-in {
+  animation: slideInRight 0.3s ease forwards;
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}

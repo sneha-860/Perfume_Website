@@ -1,0 +1,40 @@
+.skeleton-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+}
+
+.skeleton-image {
+  height: 260px;
+  background: #e0e0e0;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.skeleton-body {
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skeleton-text {
+  background: #e0e0e0;
+  border-radius: 4px;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.skeleton-text.brand { height: 12px; width: 40%; }
+.skeleton-text.name { height: 20px; width: 80%; }
+.skeleton-text.tagline { height: 14px; width: 90%; }
+.skeleton-text.rating { height: 16px; width: 50%; }
+.skeleton-text.price { height: 20px; width: 30%; margin-top: auto; }
+
+@keyframes shimmer {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}

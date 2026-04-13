@@ -1,0 +1,99 @@
+.contact-page {
+  min-height: calc(100vh - 80px);
+  background: var(--white);
+}
+
+.contact-hero {
+  background: radial-gradient(ellipse at center, #1a1400 0%, #0a0a0a 70%);
+  text-align: center;
+  padding: 100px 20px 80px;
+}
+
+.contact-heading {
+  font-family: var(--font-heading);
+  color: var(--ivory);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 16px;
+}
+
+.contact-subtext {
+  color: var(--taupe);
+  font-size: 1.1rem;
+}
+
+.contact-container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 64px 24px 80px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  color: var(--black);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.form-input {
+  width: 100%;
+  background: var(--ivory);
+  border: 1px solid #ddd;
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--black);
+  outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.form-input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.15);
+}
+
+.form-input::placeholder {
+  color: var(--taupe);
+}
+
+.form-textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.contact-submit-btn {
+  background: var(--gold);
+  color: var(--black);
+  padding: 16px 40px;
+  border-radius: 2px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  align-self: flex-start;
+  transition: background 0.25s, transform 0.2s;
+}
+
+.contact-submit-btn:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 480px) {
+  .contact-submit-btn {
+    width: 100%;
+  }
+}

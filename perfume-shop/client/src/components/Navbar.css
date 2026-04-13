@@ -1,0 +1,179 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: var(--black);
+  transition: var(--transition);
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar.scrolled {
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  height: 70px;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.logo {
+  color: var(--gold);
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+/* ── Nav Links ── */
+.nav-links {
+  display: flex;
+  gap: 32px;
+}
+
+.nav-links a,
+.nav-links a:visited {
+  color: var(--ivory);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+}
+
+/* FIX 7: Active link — gold color + small underline dot */
+.nav-links a.nav-active {
+  color: var(--gold);
+}
+
+.nav-links a.nav-active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+/* ── Icons ── */
+.nav-icons {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+/* FIX 2: All icons ivory, hover gold — using currentColor via SVG */
+.icon-btn {
+  font-size: 1.2rem;
+  color: var(--ivory);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.icon-btn:hover {
+  color: var(--gold);
+}
+
+/* Wishlist filled state */
+.icon-btn.wishlist-btn.has-items {
+  color: var(--gold);
+}
+
+/* Cart / wishlist badge */
+.cart-btn,
+.wishlist-btn {
+  position: relative;
+}
+
+.cart-badge,
+.wishlist-badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: var(--gold);
+  color: var(--black);
+  font-size: 0.65rem;
+  font-weight: 700;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* ── Mobile toggle ── */
+.mobile-toggle {
+  display: none;
+  font-size: 1.5rem;
+  color: var(--ivory);
+  transition: color 0.2s ease;
+}
+
+.mobile-toggle:hover {
+  color: var(--gold);
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .navbar {
+    position: sticky;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--black);
+    flex-direction: column;
+    padding: 24px;
+    gap: 20px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(-12px);
+    pointer-events: none;
+    opacity: 0;
+    z-index: 999;
+    border-top: 1px solid #222;
+  }
+
+  .nav-links.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-links a {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  /* Hide search + wishlist on mobile, keep cart */
+  #search-icon-btn,
+  #wishlist-icon-btn {
+    display: none;
+  }
+
+  .mobile-toggle {
+    display: flex;
+  }
+}

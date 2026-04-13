@@ -1,0 +1,186 @@
+/* ── Full-screen search overlay ── */
+.search-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 140px;
+  animation: searchFadeIn 0.25s ease forwards;
+}
+
+@keyframes searchFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Dark blurred backdrop — clicking doesn't close, X button does */
+.search-overlay-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 0;
+}
+
+/* Close button top-right */
+.search-close-btn {
+  position: absolute;
+  top: 28px;
+  right: 36px;
+  color: var(--ivory);
+  font-size: 1.8rem;
+  z-index: 2;
+  opacity: 0.7;
+  transition: opacity 0.2s, color 0.2s;
+  line-height: 1;
+}
+
+.search-close-btn:hover {
+  opacity: 1;
+  color: var(--gold);
+}
+
+/* Content center */
+.search-overlay-inner {
+  position: relative;
+  z-index: 1;
+  width: 50%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.search-label {
+  color: var(--gold);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Input wrapper with animated underline */
+.search-input-wrapper {
+  position: relative;
+}
+
+.search-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid rgba(201, 168, 76, 0.4);
+  outline: none;
+  color: var(--ivory);
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  padding: 12px 4px;
+  caret-color: var(--gold);
+  transition: border-color 0.2s;
+}
+
+.search-input::placeholder {
+  color: rgba(140, 123, 107, 0.6);
+}
+
+/* Animated gold underline grows from center */
+.search-input-underline {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 1.5px;
+  background: var(--gold);
+  transition: width 0.35s ease;
+}
+
+.search-input-wrapper.focused .search-input-underline {
+  width: 100%;
+}
+
+/* Results list */
+.search-results {
+  list-style: none;
+  margin-top: 24px;
+  animation: resultsIn 0.2s ease forwards;
+}
+
+@keyframes resultsIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 12px;
+  cursor: pointer;
+  border-left: 2px solid transparent;
+  transition: border-color 0.2s, background 0.2s;
+  border-radius: 0 4px 4px 0;
+}
+
+.search-result-item:hover {
+  border-left-color: var(--gold);
+  background: rgba(201, 168, 76, 0.06);
+}
+
+.search-result-thumb {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.search-result-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.search-result-name {
+  color: var(--ivory);
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: var(--font-heading);
+}
+
+.search-result-brand {
+  color: var(--taupe);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.search-no-results {
+  color: var(--taupe);
+  font-size: 0.9rem;
+  padding: 20px 0;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .search-overlay {
+    padding-top: 100px;
+  }
+  .search-overlay-inner {
+    width: 88%;
+  }
+  .search-input {
+    font-size: 1.2rem;
+  }
+  .search-close-btn {
+    top: 20px;
+    right: 20px;
+    font-size: 1.5rem;
+  }
+}

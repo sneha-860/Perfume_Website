@@ -1,0 +1,63 @@
+.offers-strip {
+  background: var(--black);
+  border-top: 1px solid rgba(201, 168, 76, 0.3);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.3);
+  height: 40px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* ── Desktop ── */
+.offers-desktop {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.offer-text {
+  color: var(--gold);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.offers-sep {
+  color: var(--taupe);
+  font-size: 0.6rem;
+  line-height: 1;
+}
+
+/* ── Mobile marquee ── */
+.offers-marquee {
+  display: none;
+  width: 100%;
+  overflow: hidden;
+}
+
+.marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  white-space: nowrap;
+  animation: marquee 24s linear infinite;
+}
+
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@media (max-width: 768px) {
+  .offers-desktop {
+    display: none;
+  }
+  .offers-marquee {
+    display: block;
+  }
+}
