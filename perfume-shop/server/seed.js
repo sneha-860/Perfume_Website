@@ -15,7 +15,11 @@ const products = [
     badge: "Bestseller",
     rating: 4.7,
     reviewCount: 3,
-    images: ["https://placehold.co/600x600/c9a84c/0a0a0a?text=Noir+Absolu"]
+    images: [
+      'https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=600',
+      'https://images.unsplash.com/photo-1594035910387-fea47794261f?w=600',
+      'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=600'
+    ]
   },
   {
     name: "Blanc de Soie",
@@ -28,7 +32,11 @@ const products = [
     badge: "New",
     rating: 4.5,
     reviewCount: 3,
-    images: ["https://placehold.co/600x600/c9a84c/0a0a0a?text=Blanc+de+Soie"]
+    images: [
+      'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=600',
+      'https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=600',
+      'https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=600'
+    ]
   },
   {
     name: "Ambre Soleil",
@@ -41,7 +49,11 @@ const products = [
     badge: "Limited",
     rating: 4.8,
     reviewCount: 3,
-    images: ["https://placehold.co/600x600/c9a84c/0a0a0a?text=Ambre+Soleil"]
+    images: [
+      'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=600',
+      'https://images.unsplash.com/photo-1600612253971-8b28a2177f6f?w=600',
+      'https://images.unsplash.com/photo-1601295452898-1dd1e1f99b91?w=600'
+    ]
   },
   {
     name: "Vert Sauvage",
@@ -54,7 +66,11 @@ const products = [
     badge: "",
     rating: 4.3,
     reviewCount: 3,
-    images: ["https://placehold.co/600x600/c9a84c/0a0a0a?text=Vert+Sauvage"]
+    images: [
+      'https://images.unsplash.com/photo-1608528577891-eb055944f2e7?w=600',
+      'https://images.unsplash.com/photo-1616949793459-e25ec15e2a23?w=600',
+      'https://images.unsplash.com/photo-1583445095369-9c651e7e5d34?w=600'
+    ]
   },
   {
     name: "Rose Eternelle",
@@ -67,7 +83,11 @@ const products = [
     badge: "Bestseller",
     rating: 4.9,
     reviewCount: 3,
-    images: ["https://placehold.co/600x600/c9a84c/0a0a0a?text=Rose+Eternelle"]
+    images: [
+      'https://images.unsplash.com/photo-1619994403073-2cec844b8e63?w=600',
+      'https://images.unsplash.com/photo-1594035910387-fea47794261f?w=600',
+      'https://images.unsplash.com/photo-1600528622304-1e6f5ec33100?w=600'
+    ]
   }
 ];
 
