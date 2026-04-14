@@ -130,8 +130,8 @@ const seedDB = async () => {
     });
 
     await Review.insertMany(reviews);
-    console.log("Database seeded successfully");
-    process.exit();
+    // Database seeded successfully
+    process.exit(0);
   } catch (err) {
     console.error("Seeding error:", err);
     process.exit(1);

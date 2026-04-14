@@ -10,19 +10,19 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware configuration
-app.use(cors({ origin: 'http://localhost:3000' }));
+const allowedOrigins = [
+  'http://localhost:3000',
+  process.env.CLIENT_URL
+].filter(Boolean);
+app.use(cors({ 
+  origin: allowedOrigins,
+  credentials: true 
+}));
 app.use(express.json());
 
-// Root route - API status
-app.get('/', (req, res) => {
-  res.json({
-    status: 'ok',
-    message: '🌸 Perfume Shop API is running',
-    version: '1.0.0',
-    endpoints: {
-      products: '/api/products',
-    }
-  });
+// Health check route
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok' });
 });
 
 // API route mapping
@@ -31,11 +31,11 @@ app.use('/api/products', productRoutes);
 // Database connection and server listening
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
-    console.log('MongoDB connected');
     app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
+      // Server started successfully
     });
   })
   .catch(err => {
     console.error('Database connection error:', err);
+    process.exit(1);
   });
