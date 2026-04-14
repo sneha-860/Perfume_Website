@@ -9,7 +9,7 @@ export default function AboutPage() {
       <section className="about-hero">
         <div className="about-hero-content">
           <p className="about-label">OUR STORY</p>
-          <h1 className="about-heading">The Art of Fine Perfumery</h1>
+          <h1 className="about-headin">The Art of Fine Perfumery</h1>
           <p className="about-subtext">
             Founded in the heart of Paris, Lumière brings centuries
             of artisanal perfumery into the modern era.
@@ -20,9 +20,14 @@ export default function AboutPage() {
       {/* SECTION 2 - STORY */}
       <section className="about-story">
         <div className="about-story-visual">
-          <span className="about-symbol">✦</span>
-          <p className="about-est">Est. 2024</p>
-          <p className="about-location">Paris, France</p>
+          <img 
+            src="https://images.unsplash.com/photo-1615655986865-36b8c019b1c3?w=600" 
+            alt="Lumière Craftsmanship" 
+            className="about-story-image"
+            onError={(e) => {
+              e.target.src = 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=600';
+            }}
+          />
         </div>
         <div className="about-story-text">
           <h2>Crafted With Purpose</h2>

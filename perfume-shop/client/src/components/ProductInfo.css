@@ -114,6 +114,15 @@
 .btn-wishlist:hover {
   background: #fffbf0;
 }
+.btn-wishlist.wishlisted {
+  background: var(--gold);
+  color: var(--black);
+  border-color: var(--gold);
+}
+
+.btn-wishlist.wishlisted:hover {
+  background: var(--gold-light);
+}
 
 .pi-share-section {
   display: flex;

@@ -4,39 +4,37 @@ import StarRating from './StarRating';
 import { useWishlist } from '../hooks/useWishlist';
 import './ProductCard.css';
 
+function getCardVisual(category) {
+  const visuals = {
+    'Oriental': { 
+      bg: 'linear-gradient(135deg, #1a0800 0%, #3d1a00 50%, #1a0800 100%)',
+      symbol: '✦'
+    },
+    'Floral': { 
+      bg: 'linear-gradient(135deg, #0d0010 0%, #2a0035 50%, #0d0010 100%)',
+      symbol: '❋'
+    },
+    'Amber': { 
+      bg: 'linear-gradient(135deg, #1a0e00 0%, #3d2600 50%, #1a0e00 100%)',
+      symbol: '◉'
+    },
+    'Fresh': { 
+      bg: 'linear-gradient(135deg, #001008 0%, #002818 50%, #001008 100%)',
+      symbol: '❂'
+    },
+  };
+  return visuals[category] || visuals['Oriental'];
+}
+
 // Fetches and displays all products in a responsive grid
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
   const { isWishlisted, toggleWishlist } = useWishlist();
   const wishlisted = isWishlisted(product._id);
 
-  const handleAddToCart = (e) => {
-    e.stopPropagation();
-    try {
-      const cart = JSON.parse(localStorage.getItem('lumiere_cart') || '[]');
-      const firstSize = product.sizes && product.sizes[0] ? product.sizes[0] : { size: 'Default', price: product.price };
-
-      const existingItemIndex = cart.findIndex(
-        item => item.productId === product._id && item.selectedSize === firstSize.size
-      );
-
-      if (existingItemIndex > -1) {
-        cart[existingItemIndex].quantity += 1;
-      } else {
-        cart.push({
-          productId: product._id,
-          name: product.name,
-          price: firstSize.price,
-          selectedSize: firstSize.size,
-          image: product.images[0],
-          quantity: 1
-        });
-      }
-
-      localStorage.setItem('lumiere_cart', JSON.stringify(cart));
-      window.dispatchEvent(new CustomEvent('cartUpdated', { detail: { action: 'added' } }));
-    } catch {}
-  };
+  const primaryImage = product.images && product.images[0]
+    ? product.images[0]
+    : null;
 
   // FIX 4: Heart toggles wishlist, does NOT navigate
   const handleWishlistToggle = (e) => {
@@ -48,11 +46,32 @@ const ProductCard = ({ product }) => {
 
   return (
     <div className="product-card" onClick={() => navigate(`/product/${product._id}`)}>
-      <div className="card-image-wrapper">
-        <img src={product.images[0]} alt={product.name} className="product-image" />
+      <div className="card-image-area">
+        {primaryImage && (
+          <img
+            src={primaryImage}
+            alt={product.name}
+            className="card-image"
+            onError={(e) => {
+              e.target.style.display = 'none';
+              e.target.nextElementSibling.style.display = 'flex';
+            }}
+          />
+        )}
+        <div
+          className="card-image-fallback"
+          style={{
+            display: primaryImage ? 'none' : 'flex',
+            background: getCardVisual(product.category).bg
+          }}
+        >
+          <span className="card-image-symbol">
+            {getCardVisual(product.category).symbol}
+          </span>
+          <span className="card-image-name">{product.name}</span>
+        </div>
         {product.badge && <span className="badge">{product.badge}</span>}
-
-        {/* FIX 4: Wishlist heart button */}
+ {/* Wishlist heart button */}
         <button
           className={`heart-btn ${wishlisted ? 'wishlisted' : ''}`}
           onClick={handleWishlistToggle}
@@ -61,8 +80,7 @@ const ProductCard = ({ product }) => {
           {wishlisted ? '♥' : '♡'}
         </button>
 
-        <button className="add-to-cart-overlay" onClick={handleAddToCart}>Add to Cart</button>
-      </div>
+              </div>
 
       <div className="card-body">
         <p className="product-brand">{product.brand}</p>

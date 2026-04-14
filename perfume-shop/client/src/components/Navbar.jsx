@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { useCart } from '../hooks/useCart';
 import { useWishlist } from '../hooks/useWishlist';
 import CartDrawer from './CartDrawer';
@@ -61,27 +61,38 @@ const Navbar = () => {
           </Link>
 
           <div className={`nav-links ${mobileMenuOpen ? 'open' : ''}`}>
-            <Link
+            <NavLink 
               to="/"
-              className={isActive('/') ? 'nav-active' : ''}
+              end
+              className={({ isActive }) => isActive ? 'nav-active' : ''}
               onClick={() => setMobileMenuOpen(false)}
-            >Home</Link>
+            >
+              Home
+            </NavLink>
 
             {/* FIX 3: Collections scroll */}
             <a href="#collection" onClick={handleCollectionsClick}>Collections</a>
 
-            {/* FIX 3: About → /about route */}
+            {/* FIX 3: About → AboutSection component */}
             <Link
-              to="/about"
-              className={isActive('/about') ? 'nav-active' : ''}
-              onClick={() => setMobileMenuOpen(false)}
+            to="/"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                // Scroll to AboutSection on homepage
+                const aboutSection = document.getElementById('about');
+                if (aboutSection) {
+                  aboutSection.scrollIntoView({ behavior: 'smooth' });
+                }
+               }}
             >About</Link>
 
-            <Link
+             <NavLink 
               to="/contact"
-              className={isActive('/contact') ? 'nav-active' : ''}
+              className={({ isActive }) => isActive ? 'nav-active' : ''}
               onClick={() => setMobileMenuOpen(false)}
-            >Contact</Link>
+           >
+              Contact
+            </NavLink>
           </div>
 
           <div className="nav-icons">

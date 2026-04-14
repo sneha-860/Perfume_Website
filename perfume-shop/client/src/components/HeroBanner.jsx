@@ -21,7 +21,7 @@ const HeroBanner = () => {
   return (
     <section className="hero">
       <div className="hero-content fade-in">
-        <p className="hero-label">NEW COLLECTION 2024</p>
+        <p className="hero-label">NEW COLLECTION 2026</p>
         <h1 className="hero-title">Discover Your Signature Scent</h1>
         <p className="hero-subtitle">
           Explore our curated collection of luxury fragrances

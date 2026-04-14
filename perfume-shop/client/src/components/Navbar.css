@@ -54,22 +54,12 @@
   color: var(--gold);
 }
 
-/* FIX 7: Active link — gold color + small underline dot */
+/* FIX 7: Active link — gold color */
 .nav-links a.nav-active {
   color: var(--gold);
 }
 
-.nav-links a.nav-active::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--gold);
-}
+
 
 /* ── Icons ── */
 .nav-icons {

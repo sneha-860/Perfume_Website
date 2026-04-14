@@ -23,6 +23,11 @@ const ImageGallery = ({ images }) => {
         <img 
           src={selectedImage} 
           alt="Product" 
+           className="gallery-main-image"
+          onError={(e) => {
+            e.target.src = 
+            'https://images.unsplash.com/photo-1541643600914-78b084683702?w=600'
+          }}
           className={`main-image ${isFading ? 'fade-out' : 'fade-in'}`} 
         />
       </div>
@@ -33,6 +38,14 @@ const ImageGallery = ({ images }) => {
             <img
               key={index}
               src={img}
+              alt={`View ${index + 1}`}
+              className={`gallery-thumb ${selectedImage === img 
+                ? 'gallery-thumb-active' : ''}`}
+              onClick={() => setSelectedImage(img)}
+              onError={(e) => {
+                e.target.src = 
+                'https://images.unsplash.com/photo-1541643600914-78b084683702?w=600'
+              }}
               alt={`Thumbnail ${index + 1}`}
               className={`thumbnail ${selectedImage === img ? 'selected' : ''}`}
               onClick={() => handleThumbnailClick(img)}

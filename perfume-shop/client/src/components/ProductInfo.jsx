@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import StarRating from './StarRating';
 import Toast from './Toast';
+import { useWishlist } from '../hooks/useWishlist';
 import './ProductInfo.css';
 
 // Product details, size selector, and action buttons
@@ -10,6 +11,10 @@ const ProductInfo = ({ product }) => {
   const [toastMessage, setToastMessage] = useState('');
   const [toastVisible, setToastVisible] = useState(false);
   const [linkCopied, setLinkCopied] = useState(false);
+
+  // Wishlist functionality
+  const { isWishlisted, toggleWishlist } = useWishlist();
+  const wishlisted = isWishlisted(product._id);
 
   const handleAddToCart = () => {
     const cart = JSON.parse(localStorage.getItem('lumiere_cart') || '[]');
@@ -45,7 +50,24 @@ const ProductInfo = ({ product }) => {
     setLinkCopied(true);
     setTimeout(() => setLinkCopied(false), 2000);
   };
-
+  const handleWishlistToggle = () => {
+    try {
+      toggleWishlist(product._id);
+      
+      const message = wishlisted 
+        ? `${product.name} removed from wishlist` 
+        : `${product.name} added to wishlist!`;
+      
+      setToastMessage(message);
+      setToastVisible(true);
+      setTimeout(() => setToastVisible(false), 3000);
+    } catch (error) {
+      console.error('Error toggling wishlist:', error);
+      setToastMessage('Error updating wishlist');
+      setToastVisible(true);
+      setTimeout(() => setToastVisible(false), 3000);
+    }
+  };
   const shareText = `Check out ${product.name}`;
   const pageURL = window.location.href;
 
@@ -84,8 +106,11 @@ const ProductInfo = ({ product }) => {
         <button className="btn-add-cart" onClick={handleAddToCart}>
           Add to Cart
         </button>
-        <button className="btn-wishlist">
-          Add to Wishlist
+         <button 
+          className={`btn-wishlist ${wishlisted ? 'wishlisted' : ''}`}
+          onClick={handleWishlistToggle}
+        >
+          {wishlisted ? 'Remove from Wishlist' : 'Add to Wishlist'}
         </button>
       </div>
       
